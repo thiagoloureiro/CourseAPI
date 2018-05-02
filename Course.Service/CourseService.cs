@@ -1,4 +1,5 @@
-﻿using Course.Data;
+﻿using System.Threading.Tasks;
+using Course.Data;
 using Course.Exception;
 using Course.Model;
 using TestaCache.Cache;
@@ -14,10 +15,11 @@ namespace Course.Service
             _courseRepository = courseRepository;
         }
 
-        public void CourseSignup(int courseId, int studentId)
+        [AffectedCacheableMethods("CourseReport")]
+        public async Task CourseSignup(int courseId, int studentId)
         {
             if (_courseRepository.CheckCourseCapacity(courseId))
-                _courseRepository.CourseSignup(courseId, studentId);
+                await _courseRepository.CourseSignup(courseId, studentId);
             else
                 throw new CourseFullException();
         }

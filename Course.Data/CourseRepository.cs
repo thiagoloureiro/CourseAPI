@@ -1,20 +1,21 @@
-﻿using Dapper;
+﻿using Course.Model;
+using Dapper;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using Course.Model;
+using System.Threading.Tasks;
 
 namespace Course.Data
 {
     public class CourseRepository : BaseRepository, ICourseRepository
     {
-        public void CourseSignup(int courseId, int studentId)
+        public async Task CourseSignup(int courseId, int studentId)
         {
             using (var db = new SqlConnection(Connstring))
             {
-                const string sql = @"INSERT INTO [Course] (Name, StudentLimit) VALUES (@Name, @StudentLimit)";
+                const string sql = @"INSERT INTO [CourseStudent] (StudentId, CourseId) VALUES (@StudentId, @CourseId)";
 
-                db.Execute(sql, new { CourseId = courseId, StudentId = studentId }, commandType: CommandType.Text);
+                await db.ExecuteAsync(sql, new { CourseId = courseId, StudentId = studentId }, commandType: CommandType.Text);
             }
         }
 
@@ -25,7 +26,7 @@ namespace Course.Data
             {
                 const string sql = @"SELECT StudentLimit FROM Course WHERE Id = @courseId AND StudentLimit >= (SELECT COUNT(*) FROM CourseStudent WHERE CourseId = @CourseID)";
 
-                capacity = db.Query(sql, new { CourseId = courseId }, commandType: CommandType.Text).Single();
+                capacity = db.Query<int>(sql, new { CourseId = courseId }, commandType: CommandType.Text).Single();
             }
             return capacity > 0;
         }
@@ -41,7 +42,7 @@ namespace Course.Data
                                 INNER JOIN CourseStudent CS on CS.StudentId = S.Id
                                 INNER JOIN Course C on C.Id = CS.CourseId
                                 INNER JOIN Teacher T on T.Id = C.TeacherId
-                                WHERE CS.CourseId = 1
+                                WHERE CS.CourseId = @CourseId
                                 group by C.Id, C.Name, C.StudentLimit, T.Id, T.Name";
 
                 ret = db.Query<CourseReport, Model.Course, Teacher, CourseReport>(sql, (coursereport, course, teacher) =>
