@@ -52,7 +52,18 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Course.Data\Course.Data.csproj">
+      <Project>{1e826285-2339-44cf-91c8-96473a97f5de}</Project>
+      <Name>Course.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Course.Service\Course.Service.csproj">
+      <Project>{09fcec7b-6d5a-4542-b1c4-cf2038be7182}</Project>
+      <Name>Course.Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

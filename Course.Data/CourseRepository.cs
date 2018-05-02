@@ -24,9 +24,9 @@ namespace Course.Data
             int capacity;
             using (var db = new SqlConnection(Connstring))
             {
-                const string sql = @"SELECT StudentLimit FROM Course WHERE Id = @courseId AND StudentLimit >= (SELECT COUNT(*) FROM CourseStudent WHERE CourseId = @CourseID)";
+                const string sql = @"SELECT StudentLimit FROM Course WHERE Id = @courseId AND StudentLimit > (SELECT COUNT(*) FROM CourseStudent WHERE CourseId = @CourseID)";
 
-                capacity = db.Query<int>(sql, new { CourseId = courseId }, commandType: CommandType.Text).Single();
+                capacity = db.Query<int>(sql, new { CourseId = courseId }, commandType: CommandType.Text).SingleOrDefault();
             }
             return capacity > 0;
         }
