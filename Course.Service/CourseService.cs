@@ -1,6 +1,8 @@
 ﻿using Course.Data;
 using Course.Exception;
 using Course.Model;
+using TestaCache.Cache;
+using TestaCache.Redis.Attributes;
 
 namespace Course.Service
 {
@@ -26,7 +28,8 @@ namespace Course.Service
             return _courseRepository.CheckCourseCapacity(courseId);
         }
 
-        public CourseReport CourseReport(int courseId)
+        [CacheableResult]
+        public dynamic CourseReport(int courseId)
         {
             return _courseRepository.CourseReport(courseId);
         }
