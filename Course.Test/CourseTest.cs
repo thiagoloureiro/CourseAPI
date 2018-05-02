@@ -7,7 +7,7 @@ namespace Course.Test
     public class CourseTest
     {
         [TestMethod]
-        public void TestMethod1()
+        public void CourseReport()
         {
         }
     }

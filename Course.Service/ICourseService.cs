@@ -8,6 +8,6 @@ namespace Course.Service
 
         bool CheckCourseCapacity(int courseId);
 
-        dynamic CourseReport(int courseId);
+        CourseReport CourseReport(int courseId);
     }
 }

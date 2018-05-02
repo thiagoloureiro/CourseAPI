@@ -30,7 +30,7 @@ namespace Course.Data
             return capacity > 0;
         }
 
-        public dynamic CourseReport(int courseId)
+        public CourseReport CourseReport(int courseId)
         {
             CourseReport ret;
             using (var db = new SqlConnection(Connstring))
