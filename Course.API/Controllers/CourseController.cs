@@ -15,9 +15,9 @@ namespace Course.API.Controllers
 
         [HttpPost]
         [Route("signup")]
-        public IHttpActionResult CourseSignup(int courseId, int studentId)
+        public IHttpActionResult CourseSignup(int courseId, string student, int age)
         {
-            _courseService.CourseSignup(courseId, studentId);
+            _courseService.CourseSignup(courseId, student, age);
             return Ok();
         }
 

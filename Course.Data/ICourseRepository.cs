@@ -5,7 +5,7 @@ namespace Course.Data
 {
     public interface ICourseRepository
     {
-        Task CourseSignup(int courseId, int studentId);
+        Task CourseSignup(int courseId, string student, int age);
 
         bool CheckCourseCapacity(int courseId);
 

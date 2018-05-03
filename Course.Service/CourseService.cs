@@ -16,10 +16,10 @@ namespace Course.Service
         }
 
         [AffectedCacheableMethods("CourseReport")]
-        public async Task CourseSignup(int courseId, int studentId)
+        public async Task CourseSignup(int courseId, string student, int age)
         {
             if (_courseRepository.CheckCourseCapacity(courseId))
-                await _courseRepository.CourseSignup(courseId, studentId);
+                await _courseRepository.CourseSignup(courseId, student, age);
             else
                 throw new CourseFullException();
         }

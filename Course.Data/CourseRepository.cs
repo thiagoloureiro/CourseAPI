@@ -9,13 +9,13 @@ namespace Course.Data
 {
     public class CourseRepository : BaseRepository, ICourseRepository
     {
-        public async Task CourseSignup(int courseId, int studentId)
+        public async Task CourseSignup(int courseId, string student, int age)
         {
             using (var db = new SqlConnection(Connstring))
             {
-                const string sql = @"INSERT INTO [CourseStudent] (StudentId, CourseId) VALUES (@StudentId, @CourseId)";
+                const string sql = @"SP_SIGNUPCOURSE";
 
-                await db.ExecuteAsync(sql, new { CourseId = courseId, StudentId = studentId }, commandType: CommandType.Text);
+                await db.ExecuteAsync(sql, new { CourseId = courseId, StudentId = student, Age = age }, commandType: CommandType.StoredProcedure);
             }
         }
 

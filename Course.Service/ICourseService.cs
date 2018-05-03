@@ -5,7 +5,7 @@ namespace Course.Service
 {
     public interface ICourseService
     {
-        Task CourseSignup(int courseId, int studentId);
+        Task CourseSignup(int courseId, string student, string age);
 
         bool CheckCourseCapacity(int courseId);
 
