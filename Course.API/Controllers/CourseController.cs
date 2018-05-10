@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Web.Http;
 using Course.Service;
 
@@ -15,9 +16,9 @@ namespace Course.API.Controllers
 
         [HttpPost]
         [Route("signup")]
-        public IHttpActionResult CourseSignup(int courseId, string student, int age)
+        public async Task<IHttpActionResult> CourseSignup(int courseId, string student, int age)
         {
-            _courseService.CourseSignup(courseId, student, age);
+            await _courseService.CourseSignup(courseId, student, age);
             return Ok();
         }
 

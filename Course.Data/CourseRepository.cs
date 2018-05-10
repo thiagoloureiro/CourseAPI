@@ -13,9 +13,9 @@ namespace Course.Data
         {
             using (var db = new SqlConnection(Connstring))
             {
-                const string sql = @"SP_SIGNUPCOURSE";
+                const string sql = @"SP_COURSESIGNUP";
 
-                await db.ExecuteAsync(sql, new { CourseId = courseId, StudentId = student, Age = age }, commandType: CommandType.StoredProcedure);
+                await db.ExecuteAsync(sql, new { CourseId = courseId, Student = student, Age = age }, commandType: CommandType.StoredProcedure);
             }
         }
 
@@ -36,7 +36,7 @@ namespace Course.Data
             CourseReport ret;
             using (var db = new SqlConnection(Connstring))
             {
-                const string sql = @"SELECT MIN(DATEDIFF(YEAR, Birth, GETDATE())) AS AgeMin, MAX(DATEDIFF(YEAR, Birth, GETDATE())) AS AgeMax, AVG(DATEDIFF(YEAR, Birth, GETDATE())) AS AgeAvg,
+                const string sql = @"SELECT MIN(Age) AS AgeMin, MAX(Age) AS AgeMax, AVG(Age) AS AgeAvg,
                                 C.Id, C.Name, C.StudentLimit,
                                 T.Id, T.Name FROM Student S
                                 INNER JOIN CourseStudent CS on CS.StudentId = S.Id
