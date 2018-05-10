@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Course.Data", "Course.Data\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Course.Service", "Course.Service\Course.Service.csproj", "{09FCEC7B-6D5A-4542-B1C4-CF2038BE7182}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Course.RabbitMQ", "Course.RabbitMQ\Course.RabbitMQ.csproj", "{A2EA8619-A61A-4F20-AF94-3B2A60C3631E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Course.Test", "Course.Test\Course.Test.csproj", "{553BE87B-8B35-4EA8-AFFA-735995669BD6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Course.Exception", "Course.Exception\Course.Exception.csproj", "{6FDC0488-92D2-4930-B147-5781E9CBA660}"
@@ -39,10 +37,6 @@ Global
 		{09FCEC7B-6D5A-4542-B1C4-CF2038BE7182}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09FCEC7B-6D5A-4542-B1C4-CF2038BE7182}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{09FCEC7B-6D5A-4542-B1C4-CF2038BE7182}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A2EA8619-A61A-4F20-AF94-3B2A60C3631E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A2EA8619-A61A-4F20-AF94-3B2A60C3631E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A2EA8619-A61A-4F20-AF94-3B2A60C3631E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A2EA8619-A61A-4F20-AF94-3B2A60C3631E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{553BE87B-8B35-4EA8-AFFA-735995669BD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{553BE87B-8B35-4EA8-AFFA-735995669BD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{553BE87B-8B35-4EA8-AFFA-735995669BD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
